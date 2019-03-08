@@ -49,26 +49,7 @@ public class GestorContactos {
 	}
 
 	private static void crearContacto() {
-		Contacto contacto = new Contacto();
 
-		System.out.println("Ingrese el nombre");
-		String nombre = scan.nextLine();
-		contacto.setNombre(nombre);
-
-		System.out.println("Ingrese el apellido");
-		String apellido = scan.nextLine();
-		contacto.setApellido(apellido);
-
-		System.out.println("Ingrese la fecha de nacimiento");
-		String fechaNacimiento = scan.nextLine();
-		contacto.setFechaNacimiento(fechaNacimiento);
-
-		System.out.println("Ingrese el telefono");
-		String telefono = scan.nextLine();
-		contacto.setTelefono(telefono);
-
-		contactos.add(contacto);
-		System.out.println("Contacto ingresado exitosamente");
 	}
 
 
