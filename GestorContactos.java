@@ -31,7 +31,7 @@ public class GestorContactos {
 					crearContacto();
 					break;
 				case 2:
-					//eliminarContacto();
+					eliminarContacto();
 					break;
 				case 3:
 					mostrarTodos();
@@ -52,7 +52,24 @@ public class GestorContactos {
 
 	}
 
-	private static void eliminarContacto() {}
+
+	private static void eliminarContacto() {
+		System.out.println("Ingrese el telefono del contacto a borrar");
+		String tel = scan.next();
+		System.out.println("El tamaño antes era: "+contactos.size());
+		for(int i=0;i<contactos.size();i++) {
+			if(contactos.get(i).getTelefono().equals(tel)){
+			contactos.remove(i);
+			System.out.println("El tamaño ahora es: "+contactos.size());
+			}
+			else if(i==contactos.size()-1&&!contactos.get(i).getTelefono().equals(tel)){
+			System.out.println("NO se ha encontrado ningun usuario con ese numero");
+			}
+		}
+
+	}
+
+
 
 	private static void mostrarTodos() {
 		contactos.forEach(System.out::println);
