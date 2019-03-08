@@ -75,6 +75,9 @@ public class GestorContactos {
 		System.out.println("Ingrese el telefono del contacto a borrar");
 		String tel = scan.next();
 		int cont=contactos.size();
+	  if(contactos.size()==0&&contactos.get(0).getTelefono().equals(tel)){
+			throw new IndexOutOfBoundsException("No se permite eliminar el ultimo elemento.");
+		}
 		for(int i=0;i<contactos.size();i++) {
 			if(contactos.get(i).getTelefono().equals(tel)){
 			System.out.println("El tamaño antes era: "+contactos.size());
