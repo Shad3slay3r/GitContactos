@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 public class GestorContactos {
 	
@@ -6,10 +7,15 @@ public class GestorContactos {
 	private static List<Contacto> contactos = new ArrayList<>();
 
 	public static void main(String[] args) {
+		//Contactos dummy
+		contactos.add(new Contacto("Sarina", "Bolaños", "51130327"));
+		contactos.add(new Contacto("Esvin", "González", "51233905"));
+		contactos.add(new Contacto("Lenix", "González", "47331010"));
+		contactos.add(new Contacto("Josué", "Lima", "43890987"));
+		contactos.add(new Contacto("Lester", "Segura", "51190327"));
+
 		int opcion;
 		do {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
 			System.out.println("+-------- Gestor de contactos --------+");
 			System.out.println("|                                     |");
 			System.out.println("| Seleccione una opción:              |");
@@ -23,16 +29,16 @@ public class GestorContactos {
 			opcion = scan.nextInt();
 			switch (opcion) {
 				case 1:
-					//crearContacto();
+					crearContacto();
 					break;
 				case 2:
-					//eliminarContacto();
+					eliminarContacto();
 					break;
 				case 3:
-					//mostrarTodos();
+					mostrarTodos();
 					break;
 				case 4:
-					//mostrarFiltrados();
+					mostrarFiltrados();
 					break;
 				case 0:
 					System.out.println("\n\nBye ;)");
@@ -43,12 +49,47 @@ public class GestorContactos {
 		} while(opcion != 0);
 	}
 
-	private static void crearContacto() {}
+	private static void crearContacto() {
+		Contacto contacto = new Contacto();
 
-	private static void eliminarContacto() {}
+		System.out.println("Ingrese el nombre");
+		String nombre = scan.nextLine();
+		contacto.setNombre(nombre);
 
-	private static void mostrarTodos() {}
+		System.out.println("Ingrese el apellido");
+		String apellido = scan.nextLine();
+		contacto.setApellido(apellido);
 
-	private static void mostrarFiltrados() {}
+		System.out.println("Ingrese la fecha de nacimiento");
+		String fechaNacimiento = scan.nextLine();
+		contacto.setFechaNacimiento(fechaNacimiento);
+
+		System.out.println("Ingrese el telefono");
+		String telefono = scan.nextLine();
+		contacto.setTelefono(telefono);
+
+		contactos.add(contacto);
+		System.out.println("Contacto ingresado exitosamente");
+	}
+
+	private static void eliminarContacto() {
+		System.out.println("Ingrese el número de teléfono del contacto que desea eliminar:");
+		String telefono = scan.nextLine();
+		contactos = contactos.stream()
+			.filter(c -> ! c.getTelefono().equals(telefono))
+			.collect(Collectors.toList());
+	}
+
+	private static void mostrarTodos() {
+		contactos.forEach(System.out::println);
+	}
+
+	private static void mostrarFiltrados() {
+		System.out.println("Ingrese el criterio de búsqueda:");
+		String texto = scan.nextLine().trim().toLowerCase();
+		contactos.stream()
+			.filter(c -> c.contiene(texto))
+			.forEach(System.out::println);
+	}
 
 }
