@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 public class GestorContactos {
 	
@@ -26,7 +27,7 @@ public class GestorContactos {
 					//crearContacto();
 					break;
 				case 2:
-					//eliminarContacto();
+					eliminarContacto();
 					break;
 				case 3:
 					//mostrarTodos();
@@ -45,7 +46,13 @@ public class GestorContactos {
 
 	private static void crearContacto() {}
 
-	private static void eliminarContacto() {}
+	private static void eliminarContacto() {
+		System.out.println("Ingrese el número de teléfono del contacto que desea eliminar:");
+		String telefono = scan.nextLine();
+		contactos = contactos.stream()
+			.filter(c -> ! c.getTelefono().equals(telefono))
+			.collect(Collectors.toList());
+	}
 
 	private static void mostrarTodos() {}
 
