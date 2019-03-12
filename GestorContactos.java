@@ -38,7 +38,7 @@ public class GestorContactos {
 					mostrarTodos();
 					break;
 				case 4:
-					//mostrarFiltrados();
+					mostrarFiltrados();
 					break;
 				case 0:
 					System.out.println("\n\nBye ;)");
@@ -84,6 +84,12 @@ public class GestorContactos {
 		contactos.forEach(System.out::println);
 	}
 
-	private static void mostrarFiltrados() {}
+	private static void mostrarFiltrados() {
+		System.out.println("Ingrese el criterio de búsqueda:");
+		String texto = scan.nextLine().trim().toLowerCase();
+		contactos.stream()
+			.filter(c -> c.contiene(texto))
+			.forEach(System.out::println);
+	}
 
 }
