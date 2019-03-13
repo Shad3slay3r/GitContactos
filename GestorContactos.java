@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 public class GestorContactos {
 
@@ -71,13 +72,12 @@ public class GestorContactos {
 
 	}
 
-
-
 	private static void mostrarTodos() {
 		contactos.forEach(System.out::println);
 	}
 
 	private static void mostrarFiltrados() {
+
 		System.out.println("Ingrese el nombre para filtrar");
 		String nom = scan.next();
 		for(int i=0;i<contactos.size();i++) {
@@ -85,6 +85,9 @@ public class GestorContactos {
 		    System.out.println(contactos.get(i));
 			}
 		}
+
+
+
 
 	}
 

@@ -45,6 +45,11 @@ public class Contacto {
 		this.telefono = telefono;
 	}
 
+
+	public boolean contiene(String texto) {
+		return nombre.toLowerCase().contains(texto) || apellido.toLowerCase().contains(texto);
+	}
+
 	@Override
 	public String toString() {
 		return this.nombre + " - " + this.apellido + " - " + this.telefono;
